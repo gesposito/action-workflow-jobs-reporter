@@ -1,0 +1,45 @@
+name: "Add Report"
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "releases/*"
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+
+      - name: Add Report for Workflow Jobs statuses
+        uses: gesposito/action-workflow-jobs-reporter@v1
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_path: "./workflow-results/"
+          report_filename: "workflow-jobs.xml"
+
+      - name: Upload workflow results
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: workflow-results
+          path: |
+            ./workflow-results/workflow-jobs.xml
