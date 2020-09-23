@@ -1,7 +1,7 @@
 {
-  "name": "javascript-action",
+  "name": "action-workflow-jobs-reporter",
   "version": "1.0.0",
-  "description": "JavaScript Action Template",
+  "description": "Report Workflow Jobs statuses",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
+    "url": "git+https://github.com/gesposito/action-workflow-jobs-reporter.git"
   },
   "keywords": [
     "GitHub",
@@ -21,11 +21,13 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/actions/javascript-action/issues"
+    "url": "https://github.com/gesposito/action-workflow-jobs-reporter/issues"
   },
-  "homepage": "https://github.com/actions/javascript-action#readme",
+  "homepage": "https://github.com/gesposito/action-workflow-jobs-reporter#readme",
   "dependencies": {
-    "@actions/core": "^1.2.5"
+    "@actions/core": "^1.2.5",
+    "@actions/github": "^4.0.0",
+    "junit-xml": "^1.2.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.24.0",

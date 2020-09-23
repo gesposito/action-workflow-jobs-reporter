@@ -1,13 +1,19 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: "Report Workflow Jobs statuses"
+description: "Write a JUnit XML Report for Workflow Jobs statuses"
+
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  github_token:
+    description: "GITHUB_TOKEN"
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+
+  report_path:
+    description: "File path of a generated XML report, used for reading failing test cases"
+    default: "./workflow-results/"
+
+  report_filename:
+    description: "Filename of a generated XML report"
+    default: "workflow-jobs.xml"
+
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"

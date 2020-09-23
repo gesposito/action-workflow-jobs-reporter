@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Report Returns a JSON report from Workflow jobs 1`] = `
+Object {
+  "name": "workflow name",
+  "suites": Array [
+    Object {
+      "name": "error",
+      "testCases": Array [
+        Object {
+          "name": "Set up job",
+        },
+        Object {
+          "name": "Run actions/checkout@v2",
+        },
+        Object {
+          "failures": Array [
+            Object {
+              "message": "workflow name - error - Run npm run error ",
+            },
+          ],
+          "name": "Run npm run error",
+        },
+        Object {
+          "name": "Post Run actions/checkout@v2",
+        },
+        Object {
+          "name": "Complete job",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Report Returns a JUnit XML report from Workflow jobs 1`] = `"<testsuites tests=\\"5\\" errors=\\"0\\" failures=\\"1\\" skipped=\\"0\\" name=\\"workflow name\\"><testsuite tests=\\"5\\" errors=\\"0\\" failures=\\"1\\" skipped=\\"0\\" name=\\"error\\"><testcase name=\\"Set up job\\" classname=\\"Set up job\\"></testcase><testcase name=\\"Run actions/checkout@v2\\" classname=\\"Run actions/checkout@v2\\"></testcase><testcase name=\\"Run npm run error\\" classname=\\"Run npm run error\\"><error>workflow name - error - Run npm run error </error></testcase><testcase name=\\"Post Run actions/checkout@v2\\" classname=\\"Post Run actions/checkout@v2\\"></testcase><testcase name=\\"Complete job\\" classname=\\"Complete job\\"></testcase></testsuite></testsuites>"`;
