@@ -24,7 +24,6 @@ async function run() {
       ...repo,
       run_id: runId,
     });
-    core.info(`${jobs.length} jobs found`);
 
     const report = getReportFrom(workflow, jobs);
     const XML = getJunitXml(report);
@@ -39,9 +38,12 @@ async function run() {
 }
 
 function getReportFrom(workflow, jobs) {
+  core.info(`${jobs.length} jobs found`);
+
   const report = {
     name: workflow,
     suites: jobs.map((job) => {
+      core.info(`${job.steps.length} steps found for ${job.name}`);
       const suite = {
         name: job.name,
         testCases: job.steps.map(getTestCase(workflow, job)),
