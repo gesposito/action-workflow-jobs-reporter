@@ -35,7 +35,7 @@ async function run() {
     const report = getReportFrom(workflow, jobs);
     const XML = getJunitXml(report);
 
-    await fs.mkdir(reportPath);
+    await fs.mkdir(reportPath, { recursive: true });
     const fullPath = path.join(reportPath, reportFilename);
     core.info(`Writing XML report to ${fullPath}`);
     await fs.writeFile(fullPath, XML);
